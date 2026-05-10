@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grupo Juvenil San Carlo Acutis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4AF37;
+    --gold-light: #F0D060;
+    --gold-dark: #9E7B1A;
+    --blue-deep: #0B1F4B;
+    --blue-mid: #1A3A6E;
+    --blue-light: #2756A8;
+    --cream: #FAF3E0;
+    --white: #FFFFFF;
+    --red-accent: #8B1A1A;
+    --text-dark: #1A1A2E;
+    --shadow: rgba(0,0,0,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--blue-deep);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ─── PARTICLES ─── */
+  #particles {
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 0;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--gold-light);
+    animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
+    opacity: 0;
+  }
+  @keyframes twinkle { 0%{opacity:0;transform:scale(.5)} 100%{opacity:.8;transform:scale(1.2)} }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(212,175,55,.18) 0%, transparent 70%),
+      linear-gradient(180deg, #0B1F4B 0%, #071232 100%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  .halo-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(212,175,55,.15);
+    animation: expand 8s ease-out infinite;
+  }
+  .halo-ring:nth-child(1){ width:300px;height:300px;animation-delay:0s; }
+  .halo-ring:nth-child(2){ width:500px;height:500px;animation-delay:2s; }
+  .halo-ring:nth-child(3){ width:700px;height:700px;animation-delay:4s; }
+  @keyframes expand {
+    0%{transform:scale(.8);opacity:.5}
+    100%{transform:scale(1.2);opacity:0}
+  }
+
+  .hero-badge {
+    font-family: 'Cinzel', serif;
+    font-size: .75rem;
+    letter-spacing: .3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    border: 1px solid rgba(212,175,55,.4);
+    padding: .4rem 1.4rem;
+    border-radius: 2rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(4px);
+    animation: fadeDown .8s ease both;
+  }
+
+  .hero-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: fadeDown .8s .1s ease both;
+    filter: drop-shadow(0 0 20px rgba(212,175,55,.6));
+  }
+
+  .hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.4rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--white);
+    text-shadow: 0 0 40px rgba(212,175,55,.4);
+    animation: fadeDown .8s .2s ease both;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    color: rgba(250,243,224,.75);
+    margin-top: 1rem;
+    max-width: 600px;
+    animation: fadeDown .8s .35s ease both;
+  }
+
+  .hero-quote {
+    margin-top: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    max-width: 500px;
+    line-height: 1.7;
+    animation: fadeDown .8s .5s ease both;
+    position: relative;
+    padding: 0 2rem;
+  }
+  .hero-quote::before, .hero-quote::after {
+    content: '"';
+    font-size: 3rem;
+    color: rgba(212,175,55,.3);
+    position: absolute;
+    line-height: 1;
+  }
+  .hero-quote::before { left: 0; top: -.3rem; }
+  .hero-quote::after  { right: 0; bottom: -.8rem; content: '"'; }
+
+  .hero-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    margin-top: 2.5rem;
+    animation: fadeDown .8s .6s ease both;
+  }
+
+  .btn {
+    font-family: 'Cinzel', serif;
+    font-size: .85rem;
+    letter-spacing: .15em;
+    padding: .8rem 2rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    border: none;
+    transition: all .3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+    color: var(--blue-deep);
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(212,175,55,.4);
+  }
+  .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(212,175,55,.6); }
+  .btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+  }
+  .btn-outline:hover { background: rgba(212,175,55,.1); transform: translateY(-3px); }
+
+  .scroll-hint {
+    position: absolute; bottom: 2rem;
+    display: flex; flex-direction: column; align-items: center; gap: .4rem;
+    font-size: .7rem; letter-spacing: .2em; color: rgba(212,175,55,.5);
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(7,18,50,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212,175,55,.2);
+    padding: .8rem 2rem;
+    display: flex; align-items: center; justify-content: center; gap: 0;
+    flex-wrap: wrap;
+  }
+  .nav-link {
+    font-family: 'Cinzel', serif;
+    font-size: .75rem;
+    letter-spacing: .12em;
+    color: rgba(250,243,224,.7);
+    text-decoration: none;
+    padding: .4rem 1.2rem;
+    border-radius: 2rem;
+    transition: all .3s;
+  }
+  .nav-link:hover { color: var(--gold); background: rgba(212,175,55,.08); }
+
+  /* ─── SECTIONS ─── */
+  section {
+    position: relative;
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .section-tag {
+    font-family: 'Cinzel', serif;
+    font-size: .7rem;
+    letter-spacing: .3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: .6rem;
+  }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .section-line {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1.2rem auto 0;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,.3), transparent);
+    margin: 0 auto;
+  }
+
+  /* ─── ABOUT CARD ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  @media(max-width:700px){ .about-grid{ grid-template-columns:1fr; } }
+
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: rgba(250,243,224,.85);
+    margin-bottom: 1.2rem;
+  }
+
+  .about-image-box {
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 2px solid rgba(212,175,55,.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    background: rgba(255,255,255,.04);
+    aspect-ratio: 4/3;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1rem;
+    color: rgba(212,175,55,.5);
+    font-family: 'Cinzel', serif;
+    font-size: .85rem;
+    letter-spacing: .1em;
+    cursor: pointer;
+    transition: all .3s;
+    position: relative;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .about-image-box:hover { border-color: var(--gold); background: rgba(212,175,55,.05); }
+  .about-image-box .img-icon { font-size: 3rem; }
+  .about-image-box input[type=file] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  .about-image-box img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 1rem;
+  }
+
+  /* ─── STATS ROW ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+  .stat-card {
+    background: linear-gradient(135deg, rgba(26,58,110,.6), rgba(11,31,75,.8));
+    border: 1px solid rgba(212,175,55,.2);
+    border-radius: 1rem;
+    padding: 1.8rem 1rem;
+    text-align: center;
+    transition: transform .3s, border-color .3s;
+  }
+  .stat-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+  .stat-number {
+    font-family: 'Cinzel', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label {
+    font-size: .85rem;
+    color: rgba(250,243,224,.65);
+    margin-top: .4rem;
+    letter-spacing: .05em;
+  }
+
+  /* ─── INFO CARDS ─── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+  }
+  .info-card {
+    background: linear-gradient(145deg, rgba(26,58,110,.5), rgba(7,18,50,.7));
+    border: 1px solid rgba(212,175,55,.2);
+    border-radius: 1.2rem;
+    padding: 2rem 1.8rem;
+    transition: all .35s;
+    position: relative;
+    overflow: hidden;
+  }
+  .info-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .35s;
+  }
+  .info-card:hover { transform: translateY(-5px); border-color: rgba(212,175,55,.5); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+  .info-card:hover::before { transform: scaleX(1); }
+  .card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: .8rem;
+    letter-spacing: .05em;
+  }
+  .card-text {
+    font-size: .95rem;
+    line-height: 1.75;
+    color: rgba(250,243,224,.75);
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; left: .5rem; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 2rem;
+  }
+  .tl-dot {
+    position: absolute; left: -2rem;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--blue-deep);
+    top: .3rem;
+    box-shadow: 0 0 12px rgba(212,175,55,.6);
+  }
+  .tl-year {
+    font-family: 'Cinzel', serif;
+    font-size: .75rem;
+    color: var(--gold);
+    letter-spacing: .15em;
+    margin-bottom: .3rem;
+  }
+  .tl-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--white);
+    margin-bottom: .4rem;
+  }
+  .tl-text {
+    font-size: .9rem;
+    color: rgba(250,243,224,.65);
+    line-height: 1.7;
+  }
+
+  /* ─── MEDIA GALLERY ─── */
+  .gallery-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    margin: 2rem 0 1rem;
+    letter-spacing: .1em;
+  }
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .media-slot {
+    aspect-ratio: 1;
+    background: rgba(255,255,255,.04);
+    border: 1.5px dashed rgba(212,175,55,.3);
+    border-radius: .8rem;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: .6rem;
+    cursor: pointer;
+    transition: all .3s;
+    color: rgba(212,175,55,.45);
+    font-size: .75rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: .08em;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+  }
+  .media-slot:hover { border-color: var(--gold); background: rgba(212,175,55,.05); color: var(--gold); }
+  .media-slot input[type=file] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer;
+  }
+  .media-slot img, .media-slot video {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: .8rem;
+  }
+  .media-slot .slot-icon { font-size: 2rem; }
+
+  /* ─── VIDEO SLOT ─── */
+  .video-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1rem;
+  }
+  .video-slot {
+    aspect-ratio: 16/9;
+    background: rgba(255,255,255,.04);
+    border: 1.5px dashed rgba(212,175,55,.3);
+    border-radius: .8rem;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: .6rem;
+    cursor: pointer;
+    transition: all .3s;
+    color: rgba(212,175,55,.45);
+    font-size: .75rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: .08em;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+  }
+  .video-slot:hover { border-color: var(--gold); background: rgba(212,175,55,.05); color: var(--gold); }
+  .video-slot input[type=file] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer;
+  }
+  .video-slot video {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: .8rem;
+  }
+  .slot-icon { font-size: 2rem; }
+
+  /* ─── MILAGROS ─── */
+  .miracle-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .miracle-card {
+    background: rgba(139,26,26,.15);
+    border: 1px solid rgba(139,26,26,.4);
+    border-radius: 1rem;
+    padding: 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: all .3s;
+  }
+  .miracle-card:hover { transform: translateY(-4px); border-color: rgba(212,175,55,.5); background: rgba(139,26,26,.2); }
+  .miracle-card::after {
+    content: '✦';
+    position: absolute;
+    right: 1rem; top: 1rem;
+    font-size: 1.5rem;
+    color: rgba(212,175,55,.2);
+  }
+  .miracle-num {
+    font-family: 'Cinzel', serif;
+    font-size: .7rem;
+    letter-spacing: .2em;
+    color: var(--gold);
+    margin-bottom: .6rem;
+  }
+  .miracle-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: .6rem;
+  }
+  .miracle-text {
+    font-size: .9rem;
+    color: rgba(250,243,224,.7);
+    line-height: 1.7;
+  }
+
+  /* ─── GAME ─── */
+  #game-section {
+    background: linear-gradient(135deg, rgba(7,18,50,1) 0%, rgba(11,31,75,1) 100%);
+  }
+  .game-container {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(212,175,55,.25);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  }
+  .game-score-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 2rem;
+  }
+  .game-score {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold);
+  }
+  .game-lives span { font-size: 1.2rem; }
+
+  .game-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--white);
+    text-align: center;
+    min-height: 70px;
+    margin-bottom: 1.8rem;
+    padding: 1.2rem;
+    background: rgba(212,175,55,.05);
+    border-radius: .8rem;
+    border-left: 3px solid var(--gold);
+  }
+
+  .game-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .8rem;
+    margin-bottom: 1.5rem;
+  }
+  .game-btn {
+    font-family: 'Lato', sans-serif;
+    font-size: .95rem;
+    padding: .9rem 1rem;
+    border-radius: .6rem;
+    border: 1px solid rgba(212,175,55,.3);
+    background: rgba(26,58,110,.4);
+    color: var(--cream);
+    cursor: pointer;
+    transition: all .25s;
+    text-align: left;
+    line-height: 1.4;
+  }
+  .game-btn:hover:not(:disabled) { background: rgba(212,175,55,.15); border-color: var(--gold); transform: scale(1.02); }
+  .game-btn.correct { background: rgba(46,125,50,.4) !important; border-color: #4CAF50 !important; color: #a5d6a7 !important; }
+  .game-btn.wrong   { background: rgba(183,28,28,.4) !important; border-color: #e57373 !important; color: #ef9a9a !important; }
+  .game-btn:disabled { cursor: default; }
+
+  .game-feedback {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    min-height: 30px;
+    color: var(--gold-light);
+    font-size: .95rem;
+  }
+  .game-progress {
+    height: 4px;
+    background: rgba(255,255,255,.1);
+    border-radius: 2px;
+    margin-top: 1.5rem;
+    overflow: hidden;
+  }
+  .game-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+    border-radius: 2px;
+    transition: width .4s ease;
+  }
+  .game-end {
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .game-end .big-emoji { font-size: 4rem; margin-bottom: 1rem; display: block; }
+  .game-end h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    margin-bottom: .6rem;
+  }
+  .game-end p {
+    color: rgba(250,243,224,.75);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* ─── PRAYER CARD ─── */
+  .prayer-card {
+    background: linear-gradient(135deg, rgba(26,58,110,.4), rgba(7,18,50,.6));
+    border: 1px solid rgba(212,175,55,.3);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .prayer-card::before {
+    content: '✦ ✦ ✦';
+    position: absolute; top: 1.2rem; left: 50%; transform: translateX(-50%);
+    color: rgba(212,175,55,.25);
+    letter-spacing: 1rem;
+    font-size: .7rem;
+  }
+  .prayer-card p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 2;
+    color: rgba(250,243,224,.85);
+    margin-bottom: 1rem;
+  }
+  .prayer-card .attr {
+    font-family: 'Cinzel', serif;
+    font-size: .75rem;
+    letter-spacing: .15em;
+    color: var(--gold);
+  }
+
+  /* ─── CONTACT / JOIN ─── */
+  .join-card {
+    background: linear-gradient(135deg, rgba(212,175,55,.12), rgba(26,58,110,.4));
+    border: 1px solid rgba(212,175,55,.3);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .join-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .join-card p {
+    color: rgba(250,243,224,.75);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .info-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: .7rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+  .info-list li {
+    display: flex; align-items: center; gap: .8rem;
+    font-size: .95rem;
+    color: rgba(250,243,224,.8);
+  }
+  .info-list li span:first-child { font-size: 1.2rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    border-top: 1px solid rgba(212,175,55,.15);
+    font-size: .8rem;
+    color: rgba(250,243,224,.35);
+    font-family: 'Cinzel', serif;
+    letter-spacing: .1em;
+  }
+  footer strong { color: var(--gold); }
+
+  /* ─── ANIMS ─── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── CROSS DECORATION ─── */
+  .cross-deco {
+    text-align: center;
+    font-size: 1.5rem;
+    color: rgba(212,175,55,.3);
+    letter-spacing: 2rem;
+    margin: 1rem 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Particles -->
+<div id="particles"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="halo-ring"></div>
+  <div class="halo-ring"></div>
+  <div class="halo-ring"></div>
+
+  <div class="hero-badge">✦ Expo Católica Juvenil ✦</div>
+  <div class="hero-icon">✝️</div>
+  <h1>Grupo Juvenil<br><span>San Carlo Acutis</span></h1>
+  <p class="hero-sub">Jóvenes con fe, misión y corazón digital</p>
+  <p class="hero-quote">
+    La Eucaristía es mi autopista al cielo.
+    <br><small style="font-size:.8em;opacity:.7">— Beato Carlo Acutis</small>
+  </p>
+  <div class="hero-ctas">
+    <a href="#about" class="btn btn-gold">Conocer al Beato</a>
+    <a href="#game" class="btn btn-outline">🎮 Jugar</a>
+    <a href="#unete" class="btn btn-outline">Únete</a>
+  </div>
+
+  <div class="scroll-hint">
+    <span>↓</span>
+    <span>DESCUBRE</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-link" href="#about">El Beato</a>
+  <a class="nav-link" href="#grupo">Nuestro Grupo</a>
+  <a class="nav-link" href="#vida">Su Vida</a>
+  <a class="nav-link" href="#milagros">Milagros</a>
+  <a class="nav-link" href="#galeria">Galería</a>
+  <a class="nav-link" href="#game">Juego</a>
+  <a class="nav-link" href="#oracion">Oración</a>
+  <a class="nav-link" href="#unete">Únete</a>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-tag">Beato Carlo Acutis</span>
+    <h2 class="section-title">El "Influencer de Dios"</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>
+        <strong style="color:var(--gold)">Carlo Acutis</strong> nació el 3 de mayo de 1991 en Londres y creció en Milán, Italia. Fue un joven ordinario con una fe extraordinaria: amaba la Eucaristía, ayudaba a los pobres y usaba su talento en informática para evangelizar.
+      </p>
+      <p>
+        A pesar de su corta vida, dejó una huella profunda. Creó un sitio web documentando <strong style="color:var(--gold)">milagros eucarísticos de todo el mundo</strong>, llevando el mensaje de Cristo a la era digital.
+      </p>
+      <p>
+        Falleció el 12 de octubre de 2006, a los 15 años, por una leucemia fulminante. Fue beatificado el <strong style="color:var(--gold)">10 de octubre de 2020</strong> en Asís, Italia, y canonizado el <strong style="color:var(--gold)">27 de abril de 2025</strong>.
+      </p>
+    </div>
+
+    <!-- Imagen: clic para cargar -->
+    <div class="about-image-box" id="heroImgBox" onclick="triggerFile('heroFileInput')">
+      <div class="Carlo.JP">📷</div>
+      <div>Toca para agregar<br>imagen de Carlo Acutis</div>
+      <input type="file" id="heroFileInput" accept="image/*" style="display:none" onchange="loadImage(this,'heroImgBox')">
+    </div>
+  </div>
+
+  <div class="stats-row reveal" style="margin-top:3rem;">
+    <div class="stat-card">
+      <span class="stat-number">15</span>
+      <span class="stat-label">Años de vida</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">2020</span>
+      <span class="stat-label">Año de beatificación</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">2025</span>
+      <span class="stat-label">Año de canonización</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">∞</span>
+      <span class="stat-label">Milagros documentados</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GRUPO -->
+<section id="grupo">
+  <div class="section-header reveal">
+    <span class="section-tag">Nuestra Comunidad</span>
+    <h2 class="section-title">Nuestro Grupo Juvenil</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="info-card reveal">
+      <div class="card-icon">🙏</div>
+      <h3 class="card-title">Nuestra Misión</h3>
+      <p class="card-text">Formamos jóvenes en la fe católica siguiendo el ejemplo de Carlo Acutis: con alegría, autenticidad y amor a la Eucaristía. Queremos ser "influencers de Dios" en nuestro entorno.</p>
+    </div>
+    <div class="info-card reveal">
+      <div class="card-icon">👥</div>
+      <h3 class="card-title">¿Quiénes Somos?</h3>
+      <p class="card-text">Somos un grupo de jóvenes de entre 13 y 29 años comprometidos con nuestra parroquia, la comunidad y el mundo. Nos reunimos semanalmente para orar, compartir y crecer juntos en la fe.</p>
+    </div>
+    <div class="info-card reveal">
+      <div class="card-icon">💡</div>
+      <h3 class="card-title">Nuestras Actividades</h3>
+      <p class="card-text">Adoración Eucarística • Catequesis juvenil • Servicio comunitario • Retiros espirituales • Evangelización digital • Grupos de oración • Actividades recreativas y culturales.</p>
+    </div>
+    <div class="info-card reveal">
+      <div class="card-icon">🌍</div>
+      <h3 class="card-title">Nuestra Visión</h3>
+      <p class="card-text">Ser una comunidad que transforma corazones y comunidades desde el amor de Cristo, usando todos los medios modernos — como hizo Carlo — para llevar el Evangelio a cada rincón.</p>
+    </div>
+    <div class="info-card reveal">
+      <div class="card-icon">⭐</div>
+      <h3 class="card-title">Nuestros Valores</h3>
+      <p class="card-text">Fe genuina • Fraternidad • Servicio • Alegría • Autenticidad • Amor a la Eucaristía • Devoción mariana • Caridad con los más necesitados.</p>
+    </div>
+    <div class="info-card reveal">
+      <div class="card-icon">📅</div>
+      <h3 class="card-title">Reuniones</h3>
+      <p class="card-text">Cada semana nos reunimos para fortalecer nuestra fe. Contamos con retiros mensuales, peregrinaciones anuales y actividades especiales en fechas litúrgicas importantes.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VIDA -->
+<section id="vida">
+  <div class="section-header reveal">
+    <span class="section-tag">Cronología</span>
+    <h2 class="section-title">La Vida de Carlo Acutis</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;" class="reveal">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">03 · MAYO · 1991</div>
+        <div class="tl-title">Nacimiento</div>
+        <div class="tl-text">Nace en Londres. Su familia regresa a Milán cuando es bebé. Desde pequeño muestra una profunda sensibilidad espiritual.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1998</div>
+        <div class="tl-title">Primera Comunión</div>
+        <div class="tl-text">Recibe la Eucaristía a los 7 años. Desde entonces la Misa diaria se convierte en el centro de su vida.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2002</div>
+        <div class="tl-title">El Proyecto de los Milagros</div>
+        <div class="tl-text">Crea una exposición itinerante y un sitio web documentando más de 150 milagros eucarísticos en todo el mundo.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2006</div>
+        <div class="tl-title">Diagnóstico y Muerte</div>
+        <div class="tl-text">Diagnosticado con leucemia fulminante. Muere el 12 de octubre de 2006, ofreciendo sus sufrimientos por el Papa y la Iglesia.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2020</div>
+        <div class="tl-title">Beatificación</div>
+        <div class="tl-text">El Papa Francisco lo beatifica el 10 de octubre en Asís. Su cuerpo incorrupto reposa en la Iglesia de Santa Maria Maggiore.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">27 · ABRIL · 2025</div>
+        <div class="tl-title">🌟 Canonización</div>
+        <div class="tl-text">El Papa Francisco lo canoniza en Roma. Carlo Acutis es oficialmente declarado <strong style="color:var(--gold)">Santo</strong> de la Iglesia Católica.</div>
+      </div>
+    </div>
+
+    <!-- Imagen lateral -->
+    <div class="about-image-box" id="vidaImgBox" onclick="triggerFile('vidaFileInput')" style="height:100%;min-height:400px;">
+      <div class="img-icon">🖼️</div>
+      <div>Agregar imagen<br>de Carlo joven</div>
+      <input type="file" id="vidaFileInput" accept="image/*" style="display:none" onchange="loadImage(this,'vidaImgBox')">
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MILAGROS -->
+<section id="milagros">
+  <div class="section-header reveal">
+    <span class="section-tag">Fe que transforma</span>
+    <h2 class="section-title">Milagros Eucarísticos</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <p class="reveal" style="text-align:center;color:rgba(250,243,224,.7);max-width:600px;margin:0 auto 2.5rem;line-height:1.8;">
+    Carlo documentó más de 150 milagros eucarísticos alrededor del mundo. Aquí algunos de los más conocidos que él mismo catalogó en su exposición.
+  </p>
+
+  <div class="miracle-cards">
+    <div class="miracle-card reveal">
+      <div class="miracle-num">MILAGRO Nº 001 · SIGLO VIII</div>
+      <h3 class="miracle-title">Lanciano, Italia</h3>
+      <p class="miracle-text">Durante la Misa, la Hostia se transformó visiblemente en Carne y el vino en Sangre. Estudios científicos modernos confirmaron que es tejido cardíaco humano vivo.</p>
+    </div>
+    <div class="miracle-card reveal">
+      <div class="miracle-num">MILAGRO · 1263</div>
+      <h3 class="miracle-title">Bolsena, Italia</h3>
+      <p class="miracle-text">Un sacerdote con dudas vio cómo la Hostia empezaba a sangrar durante la consagración. Dio origen a la fiesta del Corpus Christi por el Papa Urbano IV.</p>
+    </div>
+    <div class="miracle-card reveal">
+      <div class="miracle-num">MILAGRO · 1996</div>
+      <h3 class="miracle-title">Buenos Aires, Argentina</h3>
+      <p class="miracle-text">Una Hostia encontrada en el suelo fue puesta en agua. Semanas después, se transformó en tejido humano. El entonces Cardenal Bergoglio (hoy Papa Francisco) mandó investigarla.</p>
+    </div>
+  </div>
+
+  <div class="cross-deco" style="margin-top:2.5rem;">✦ ✦ ✦</div>
+
+  <div class="info-card reveal" style="max-width:650px;margin:1.5rem auto 0;text-align:center;">
+    <div class="card-icon">💻</div>
+    <h3 class="card-title">El Legado Digital de Carlo</h3>
+    <p class="card-text">Carlo usó sus habilidades de programación para crear <strong style="color:var(--gold-light)">www.miracolieucaristici.org</strong>, una exposición virtual y física con evidencia científica y testimonios de milagros eucarísticos de todos los continentes. Fue su manera de evangelizar en la era digital.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="section-header reveal">
+    <span class="section-tag">Nuestros Momentos</span>
+    <h2 class="section-title">Galería del Grupo</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <p class="gallery-title reveal">📸 Fotografías — Toca cada espacio para agregar imagen</p>
+  <div class="media-grid reveal" id="photoGrid">
+    <!-- generadas por JS -->
+  </div>
+
+  <p class="gallery-title reveal" style="margin-top:2.5rem;">🎬 Videos — Toca cada espacio para agregar video</p>
+  <div class="video-row reveal" id="videoGrid">
+    <!-- generadas por JS -->
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- JUEGO -->
+<section id="game">
+  <div class="section-header reveal">
+    <span class="section-tag">Aprende Jugando</span>
+    <h2 class="section-title">Quiz Católico: ¿Cuánto Sabes?</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="game-container reveal">
+    <div id="gameArea"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ORACIÓN -->
+<section id="oracion">
+  <div class="section-header reveal">
+    <span class="section-tag">Devoción</span>
+    <h2 class="section-title">Oración a San Carlo Acutis</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="prayer-card reveal">
+    <p>
+      Oh Dios que entre los prodigios de tu gracia<br>
+      en la tierra has hecho brillar al joven Carlo Acutis,<br>
+      concédeme que, siguiendo su ejemplo,<br>
+      pueda vivir plenamente la fe católica<br>
+      y ser instrumento de tu misericordia<br>
+      y amor hacia todos los jóvenes de nuestro tiempo.
+    </p>
+    <p>
+      Por intercesión de San Carlo Acutis,<br>
+      concédeme la gracia que te pido...<br>
+      <em style="color:var(--gold-light);font-size:.9em">(aquí tu petición)</em>
+    </p>
+    <p>
+      y dame la gracia de llegar un día<br>
+      a la felicidad eterna contigo.
+    </p>
+    <span class="attr">Amén ✦ San Carlo Acutis, ruega por nosotros</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ÚNETE -->
+<section id="unete">
+  <div class="section-header reveal">
+    <span class="section-tag">Comunidad</span>
+    <h2 class="section-title">Únete al Grupo</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="join-card reveal">
+    <h3>¡Te esperamos con los brazos abiertos!</h3>
+    <p>No importa dónde estás en tu fe. Lo que importa es que des el primer paso. Como dijo Carlo: <em style="color:var(--gold-light)">"Todos nacemos como originales, pero muchos mueren como fotocopias."</em></p>
+    <ul class="info-list">
+      <li><span>📍</span><span><strong>Lugar:</strong> [Agrega el nombre de tu parroquia aquí]</span></li>
+      <li><span>📅</span><span><strong>Reuniones:</strong> [Día y hora de reuniones]</span></li>
+      <li><span>📞</span><span><strong>Contacto:</strong> [Teléfono o WhatsApp del grupo]</span></li>
+      <li><span>📧</span><span><strong>Correo:</strong> [Correo del grupo]</span></li>
+      <li><span>📱</span><span><strong>Redes:</strong> [Instagram / Facebook del grupo]</span></li>
+    </ul>
+    <a href="#about" class="btn btn-gold">Volver al inicio ✦</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>✦ <strong>Grupo Juvenil San Carlo Acutis</strong> ✦</p>
+  <p style="margin-top:.4rem">"La Eucaristía es mi autopista al cielo" — San Carlo Acutis (1991–2006)</p>
+  <p style="margin-top:.4rem;font-size:.7rem">Patrono de los jóvenes y de Internet · Fiesta: 12 de octubre</p>
+</footer>
+
+<script>
+// ─── PARTICLES ───
+const container = document.getElementById('particles');
+for(let i=0; i<60; i++){
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random()*3+1;
+  s.style.cssText = `
+    width:${size}px;height:${size}px;
+    left:${Math.random()*100}%;
+    top:${Math.random()*100}%;
+    --d:${(Math.random()*4+2).toFixed(1)}s;
+    animation-delay:${(Math.random()*5).toFixed(1)}s;
+  `;
+  container.appendChild(s);
+}
+
+// ─── REVEAL ON SCROLL ───
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'), i*80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
+
+// ─── IMAGE UPLOAD ───
+function triggerFile(id){
+  const input = document.getElementById(id);
+  // Si ya tiene imagen cargada, no hace nada
+  if(input.dataset.loaded === 'true') return;
+  input.click();
+}
+function loadImage(input, boxId){
+  const box = document.getElementById(boxId);
+  const file = input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    box.querySelectorAll(':not(input)').forEach(el=>el.remove());
+    const img = document.createElement('img');
+    img.src = e.target.result;
+    box.appendChild(img);
+    // Marcar como cargada y bloquear clic
+    input.dataset.loaded = 'true';
+    input.disabled = true;
+    box.style.cursor = 'default';
+    box.onclick = null;
+    // Guardar en localStorage para persistir
+    try { localStorage.setItem('img_' + boxId, e.target.result); } catch(err){}
+  };
+  reader.readAsDataURL(file);
+}
+// Restaurar imágenes guardadas al recargar
+window.addEventListener('DOMContentLoaded', () => {
+  ['heroImgBox','vidaImgBox'].forEach(boxId => {
+    try {
+      const saved = localStorage.getItem('img_' + boxId);
+      if(!saved) return;
+      const box = document.getElementById(boxId);
+      if(!box) return;
+      box.querySelectorAll(':not(input)').forEach(el=>el.remove());
+      const img = document.createElement('img');
+      img.src = saved;
+      box.appendChild(img);
+      const input = box.querySelector('input[type=file]');
+      if(input){ input.dataset.loaded = 'true'; input.disabled = true; }
+      box.style.cursor = 'default';
+      box.onclick = null;
+    } catch(err){}
+  });
+});
+
+// ─── DYNAMIC MEDIA GRIDS ───
+function createPhotoSlots(){
+  const grid = document.getElementById('photoGrid');
+  const labels = [
+    '📸 Retiro 2024','📸 Semana Santa','📸 Corpus Christi',
+    '📸 Adoración','📸 Actividad','📸 Grupo'];
+  labels.forEach((label,i) => {
+    const slot = document.createElement('div');
+    slot.className = 'media-slot';
+    slot.id = `photoSlot${i}`;
+    slot.innerHTML = `<span class="slot-icon">🖼️</span><span>${label}</span><input type="file" accept="image/*" onchange="loadMedia(this,'photoSlot${i}','img')">`;
+    grid.appendChild(slot);
+  });
+}
+function createVideoSlots(){
+  const grid = document.getElementById('videoGrid');
+  const labels = ['🎬 Video del Grupo','🎬 Testimonio','🎬 Evento Especial'];
+  labels.forEach((label,i) => {
+    const slot = document.createElement('div');
+    slot.className = 'video-slot';
+    slot.id = `videoSlot${i}`;
+    slot.innerHTML = `<span class="slot-icon">▶️</span><span>${label}</span><input type="file" accept="video/*" onchange="loadMedia(this,'videoSlot${i}','video')">`;
+    grid.appendChild(slot);
+  });
+}
+function loadMedia(input, slotId, type){
+  const slot = document.getElementById(slotId);
+  const file = input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    slot.querySelectorAll(':not(input)').forEach(el=>el.remove());
+    const media = document.createElement(type);
+    media.src = e.target.result;
+    if(type==='video'){ media.controls=true; media.muted=true; }
+    slot.appendChild(media);
+    // Bloquear para que no se reemplace
+    input.dataset.loaded = 'true';
+    input.disabled = true;
+    slot.style.cursor = 'default';
+    slot.style.border = '1.5px solid rgba(212,175,55,0.5)';
+    // Guardar en localStorage
+    try { localStorage.setItem('media_' + slotId, JSON.stringify({src: e.target.result, type})); } catch(err){}
+  };
+  reader.readAsDataURL(file);
+}
+createPhotoSlots();
+createVideoSlots();
+// Restaurar galería guardada
+window.addEventListener('load', () => {
+  ['photoSlot0','photoSlot1','photoSlot2','photoSlot3','photoSlot4','photoSlot5',
+   'videoSlot0','videoSlot1','videoSlot2'].forEach(slotId => {
+    try {
+      const saved = localStorage.getItem('media_' + slotId);
+      if(!saved) return;
+      const {src, type} = JSON.parse(saved);
+      const slot = document.getElementById(slotId);
+      if(!slot) return;
+      slot.querySelectorAll(':not(input)').forEach(el=>el.remove());
+      const media = document.createElement(type);
+      media.src = src;
+      if(type==='video'){ media.controls=true; media.muted=true; }
+      slot.appendChild(media);
+      const input = slot.querySelector('input[type=file]');
+      if(input){ input.dataset.loaded='true'; input.disabled=true; }
+      slot.style.cursor='default';
+      slot.style.border='1.5px solid rgba(212,175,55,0.5)';
+    } catch(err){}
+  });
+});
+
+// ─── GAME ───
+const questions = [
+  {
+    q: "¿En qué ciudad nació Carlo Acutis?",
+    opts: ["Roma","Londres","Milán","Asís"],
+    a: 1,
+    fact: "¡Correcto! Carlo nació en Londres en 1991, aunque creció en Milán."
+  },
+  {
+    q: "¿Cuál era el 'arma secreta' favorita de Carlo Acutis?",
+    opts: ["La Biblia","El Rosario","La Eucaristía diaria","La oración de la mañana"],
+    a: 2,
+    fact: "¡Exacto! Carlo llamaba a la Eucaristía su 'autopista al cielo'."
+  },
+  {
+    q: "¿Qué documentó Carlo en su famoso sitio web?",
+    opts: ["Santos mártires","Milagros eucarísticos","Apariciones marianas","Parábolas de Jesús"],
+    a: 1,
+    fact: "¡Correcto! Carlo catalogó más de 150 milagros eucarísticos de todo el mundo."
+  },
+  {
+    q: "¿A qué edad recibió Carlo su Primera Comunión?",
+    opts: ["9 años","8 años","7 años","6 años"],
+    a: 2,
+    fact: "A los 7 años recibió la Eucaristía por primera vez y desde entonces la recibía diariamente."
+  },
+  {
+    q: "¿De qué enfermedad falleció Carlo Acutis?",
+    opts: ["Cáncer de pulmón","Leucemia fulminante","Meningitis","Hepatitis"],
+    a: 1,
+    fact: "Carlo murió de leucemia fulminante el 12 de octubre de 2006."
+  },
+  {
+    q: "¿Dónde reposa el cuerpo incorrupto de Carlo Acutis?",
+    opts: ["Milán, Italia","Roma, Italia","Asís, Italia","Londres, Inglaterra"],
+    a: 2,
+    fact: "Su cuerpo incorrupto reposa en la Iglesia de Santa Maria Maggiore en Asís."
+  },
+  {
+    q: "¿Cuándo fue beatificado Carlo Acutis?",
+    opts: ["12 octubre 2019","10 octubre 2020","3 mayo 2021","12 octubre 2006"],
+    a: 1,
+    fact: "El Papa Francisco lo beatificó el 10 de octubre de 2020 en Asís."
+  },
+  {
+    q: "¿Cuál es el primer milagro eucarístico documentado más famoso del siglo VIII?",
+    opts: ["Bolsena","Orvieto","Lanciano","Siena"],
+    a: 2,
+    fact: "El milagro de Lanciano (Italia, siglo VIII) es el más antiguo: la Hostia se transformó en tejido cardíaco vivo."
+  },
+  {
+    q: "Carlo Acutis fue canonizado (declarado santo) en el año:",
+    opts: ["2023","2024","2025","2026"],
+    a: 2,
+    fact: "¡Sí! El 27 de abril de 2025 el Papa Francisco lo declaró santo en Roma."
+  },
+  {
+    q: "¿Cuál es la fiesta litúrgica de San Carlo Acutis?",
+    opts: ["3 de mayo","27 de abril","12 de octubre","10 de octubre"],
+    a: 2,
+    fact: "La fiesta de San Carlo Acutis se celebra el 12 de octubre, día de su fallecimiento."
+  }
+];
+
+let current = 0, score = 0, lives = 3;
+const gameArea = document.getElementById('gameArea');
+
+function renderGame(){
+  if(current >= questions.length || lives <= 0){
+    gameArea.innerHTML = endScreen();
+    return;
+  }
+  const q = questions[current];
+  const livesHtml = '❤️'.repeat(lives) + '🖤'.repeat(3-lives);
+  const progress = (current/questions.length)*100;
+  gameArea.innerHTML = `
+    <div class="game-score-bar">
+      <div class="game-score">✦ Puntos: ${score}</div>
+      <div class="game-score">Pregunta ${current+1}/${questions.length}</div>
+      <div class="game-lives">${livesHtml}</div>
+    </div>
+    <div class="game-question">${q.q}</div>
+    <div class="game-options">
+      ${q.opts.map((o,i)=>`<button class="game-btn" onclick="answer(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}
+    </div>
+    <div class="game-feedback" id="gfeed"></div>
+    <div class="game-progress"><div class="game-progress-bar" style="width:${progress}%"></div></div>
+  `;
+}
+
+function answer(idx){
+  const q = questions[current];
+  const btns = document.querySelectorAll('.game-btn');
+  btns.forEach(b=>b.disabled=true);
+  const feed = document.getElementById('gfeed');
+  if(idx === q.a){
+    btns[idx].classList.add('correct');
+    score += 10;
+    feed.textContent = '✦ ' + q.fact;
+    feed.style.color = '#a5d6a7';
+  } else {
+    btns[idx].classList.add('wrong');
+    btns[q.a].classList.add('correct');
+    lives--;
+    feed.textContent = '✗ ' + q.fact;
+    feed.style.color = '#ef9a9a';
+  }
+  setTimeout(()=>{ current++; renderGame(); }, 2200);
+}
+
+function endScreen(){
+  const pct = Math.round(score/(questions.length*10)*100);
+  let emoji, msg;
+  if(pct>=90){ emoji='🏆'; msg='¡Excelente! Eres un verdadero conocedor de la fe.' }
+  else if(pct>=70){ emoji='⭐'; msg='¡Muy bien! Tienes una fe bien formada.' }
+  else if(pct>=50){ emoji='😊'; msg='¡Buen intento! Sigue aprendiendo sobre nuestra fe.' }
+  else { emoji='📖'; msg='¡No te rindas! La fe se fortalece estudiando y orando.' }
+  return `
+    <div class="game-end">
+      <span class="big-emoji">${emoji}</span>
+      <h3>¡Juego Terminado!</h3>
+      <p>Obtuviste <strong style="color:var(--gold)">${score} puntos</strong> de ${questions.length*10} posibles (${pct}%)</p>
+      <p>${msg}</p>
+      <button class="btn btn-gold" onclick="restartGame()">🔄 Jugar de Nuevo</button>
+    </div>
+  `;
+}
+
+function restartGame(){ current=0; score=0; lives=3; renderGame(); }
+renderGame();
+</script>
+</body>
+</html>
