@@ -799,11 +799,9 @@
       </p>
     </div>
 
-    <!-- Imagen: clic para cargar -->
-    <div class="about-image-box" id="heroImgBox" onclick="triggerFile('heroFileInput')">
-      <div class="Carlo.JP">📷</div>
-      <div>Toca para agregar<br>imagen de Carlo Acutis</div>
-      <input type="file" id="heroFileInput" accept="image/*" style="display:none" onchange="loadImage(this,'heroImgBox')">
+    <!-- Imagen fija de Carlo Acutis -->
+    <div class="about-image-box" style="cursor:default;">
+      <img src="imágenes/Carlo.JPG.jpg" alt="Carlo Acutis" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:1rem;">
     </div>
   </div>
 
@@ -921,11 +919,9 @@
       </div>
     </div>
 
-    <!-- Imagen lateral -->
-    <div class="about-image-box" id="vidaImgBox" onclick="triggerFile('vidaFileInput')" style="height:100%;min-height:400px;">
-      <div class="img-icon">🖼️</div>
-      <div>Agregar imagen<br>de Carlo joven</div>
-      <input type="file" id="vidaFileInput" accept="image/*" style="display:none" onchange="loadImage(this,'vidaImgBox')">
+    <!-- Imagen fija sección vida -->
+    <div class="about-image-box" style="cursor:default;height:100%;min-height:400px;">
+      <img src="imágenes/Visita.jpg" alt="Carlo Acutis joven" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:1rem;">
     </div>
   </div>
 </section>
@@ -981,14 +977,39 @@
     <div class="section-line"></div>
   </div>
 
-  <p class="gallery-title reveal">📸 Fotografías — Toca cada espacio para agregar imagen</p>
-  <div class="media-grid reveal" id="photoGrid">
-    <!-- generadas por JS -->
+  <p class="gallery-title reveal">📸 Fotografías</p>
+  <div class="media-grid reveal">
+    <div class="media-slot" style="cursor:default;border:1.5px solid rgba(212,175,55,0.5);">
+      <img src="imágenes/Grupo1.jpeg" alt="Retiro 2024" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:.8rem;">
+    </div>
+    <div class="media-slot" style="cursor:default;border:1.5px solid rgba(212,175,55,0.5);">
+      <img src="imágenes/Grupo2.jpeg" alt="Semana Santa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:.8rem;">
+    </div>
+    <div class="media-slot" style="cursor:default;border:1.5px solid rgba(212,175,55,0.5);">
+      <img src="imágenes/deportivo.jpeg" alt="Corpus Christi" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:.8rem;">
+    </div>
+    <div class="media-slot" style="cursor:default;border:1.5px solid rgba(212,175,55,0.5);">
+      <img src="imágenes/fiesta.jpg" alt="Fiesta" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:.8rem;">
+    </div>
+    <div class="media-slot" style="cursor:default;border:1.5px solid rgba(212,175,55,0.5);">
+      <img src="imágenes/reriror.jpg" alt="Actividad" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:.8rem;">
+    </div>
+    <div class="media-slot" style="cursor:default;border:1.5px solid rgba(212,175,55,0.5);">
+      <img src="imágenes/Visita.jpg" alt="Visita" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:.8rem;">
+    </div>
   </div>
 
-  <p class="gallery-title reveal" style="margin-top:2.5rem;">🎬 Videos — Toca cada espacio para agregar video</p>
-  <div class="video-row reveal" id="videoGrid">
-    <!-- generadas por JS -->
+  <p class="gallery-title reveal" style="margin-top:2.5rem;">🎬 Videos</p>
+  <div class="video-row reveal">
+    <div class="video-slot" style="cursor:default;border:1.5px solid rgba(212,175,55,0.5);">
+      <video src="imágenes/video_1.mp4" controls muted style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:.8rem;"></video>
+    </div>
+    <div class="video-slot" style="cursor:default;border:1.5px solid rgba(212,175,55,0.5);">
+      <video src="imágenes/video_2.mp4" controls muted style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:.8rem;"></video>
+    </div>
+    <div class="video-slot" style="cursor:default;border:1.5px solid rgba(212,175,55,0.5);">
+      <video src="imágenes/video_3.mp4" controls muted style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:.8rem;"></video>
+    </div>
   </div>
 </section>
 
@@ -1053,11 +1074,11 @@
     <h3>¡Te esperamos con los brazos abiertos!</h3>
     <p>No importa dónde estás en tu fe. Lo que importa es que des el primer paso. Como dijo Carlo: <em style="color:var(--gold-light)">"Todos nacemos como originales, pero muchos mueren como fotocopias."</em></p>
     <ul class="info-list">
-      <li><span>📍</span><span><strong>Lugar:</strong> En la Casa del peregrino, atras del santuario de padre Jesus</span></li>
-      <li><span>📅</span><span><strong>Reuniones:</strong> Todos los domingos, a las 4PM</span></li>
+      <li><span>📍</span><span><strong>Lugar:</strong> Casa del peregrino, atras del Santuario de Padre Jesus</span></li>
+      <li><span>📅</span><span><strong>Reuniones:</strong> Domingo a las 4pm</span></li>
       <li><span>📞</span><span><strong>Contacto:</strong>  231 100 5776</span></li>
-      <li><span>📱</span><span><strong>Redes:</strong> Facebook:PJ Carlo Acutis Jalacingo </span></li>
-      <li>Instagram: oj_jalacingo</li>
+      <li><span>📱</span><span><strong>Redes:</strong> [Instagram:pj_jalacingo </span></li>
+      <li>Facebook:PJ Carlo Acutis Jalacingo </li>
     </ul>
     <a href="#about" class="btn btn-gold">Volver al inicio ✦</a>
   </div>
@@ -1099,123 +1120,9 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 reveals.forEach(r => observer.observe(r));
 
-// ─── IMAGE UPLOAD ───
-function triggerFile(id){
-  const input = document.getElementById(id);
-  // Si ya tiene imagen cargada, no hace nada
-  if(input.dataset.loaded === 'true') return;
-  input.click();
-}
-function loadImage(input, boxId){
-  const box = document.getElementById(boxId);
-  const file = input.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    box.querySelectorAll(':not(input)').forEach(el=>el.remove());
-    const img = document.createElement('img');
-    img.src = e.target.result;
-    box.appendChild(img);
-    // Marcar como cargada y bloquear clic
-    input.dataset.loaded = 'true';
-    input.disabled = true;
-    box.style.cursor = 'default';
-    box.onclick = null;
-    // Guardar en localStorage para persistir
-    try { localStorage.setItem('img_' + boxId, e.target.result); } catch(err){}
-  };
-  reader.readAsDataURL(file);
-}
-// Restaurar imágenes guardadas al recargar
-window.addEventListener('DOMContentLoaded', () => {
-  ['heroImgBox','vidaImgBox'].forEach(boxId => {
-    try {
-      const saved = localStorage.getItem('img_' + boxId);
-      if(!saved) return;
-      const box = document.getElementById(boxId);
-      if(!box) return;
-      box.querySelectorAll(':not(input)').forEach(el=>el.remove());
-      const img = document.createElement('img');
-      img.src = saved;
-      box.appendChild(img);
-      const input = box.querySelector('input[type=file]');
-      if(input){ input.dataset.loaded = 'true'; input.disabled = true; }
-      box.style.cursor = 'default';
-      box.onclick = null;
-    } catch(err){}
-  });
-});
+// ─── (imágenes fijas desde GitHub, no se necesita carga dinámica) ───
 
-// ─── DYNAMIC MEDIA GRIDS ───
-function createPhotoSlots(){
-  const grid = document.getElementById('photoGrid');
-  const labels = [
-    '📸 Retiro 2024','📸 Semana Santa','📸 Corpus Christi',
-    '📸 Adoración','📸 Actividad','📸 Grupo'];
-  labels.forEach((label,i) => {
-    const slot = document.createElement('div');
-    slot.className = 'media-slot';
-    slot.id = `photoSlot${i}`;
-    slot.innerHTML = `<span class="slot-icon">🖼️</span><span>${label}</span><input type="file" accept="image/*" onchange="loadMedia(this,'photoSlot${i}','img')">`;
-    grid.appendChild(slot);
-  });
-}
-function createVideoSlots(){
-  const grid = document.getElementById('videoGrid');
-  const labels = ['🎬 Video del Grupo','🎬 Testimonio','🎬 Evento Especial'];
-  labels.forEach((label,i) => {
-    const slot = document.createElement('div');
-    slot.className = 'video-slot';
-    slot.id = `videoSlot${i}`;
-    slot.innerHTML = `<span class="slot-icon">▶️</span><span>${label}</span><input type="file" accept="video/*" onchange="loadMedia(this,'videoSlot${i}','video')">`;
-    grid.appendChild(slot);
-  });
-}
-function loadMedia(input, slotId, type){
-  const slot = document.getElementById(slotId);
-  const file = input.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    slot.querySelectorAll(':not(input)').forEach(el=>el.remove());
-    const media = document.createElement(type);
-    media.src = e.target.result;
-    if(type==='video'){ media.controls=true; media.muted=true; }
-    slot.appendChild(media);
-    // Bloquear para que no se reemplace
-    input.dataset.loaded = 'true';
-    input.disabled = true;
-    slot.style.cursor = 'default';
-    slot.style.border = '1.5px solid rgba(212,175,55,0.5)';
-    // Guardar en localStorage
-    try { localStorage.setItem('media_' + slotId, JSON.stringify({src: e.target.result, type})); } catch(err){}
-  };
-  reader.readAsDataURL(file);
-}
-createPhotoSlots();
-createVideoSlots();
-// Restaurar galería guardada
-window.addEventListener('load', () => {
-  ['photoSlot0','photoSlot1','photoSlot2','photoSlot3','photoSlot4','photoSlot5',
-   'videoSlot0','videoSlot1','videoSlot2'].forEach(slotId => {
-    try {
-      const saved = localStorage.getItem('media_' + slotId);
-      if(!saved) return;
-      const {src, type} = JSON.parse(saved);
-      const slot = document.getElementById(slotId);
-      if(!slot) return;
-      slot.querySelectorAll(':not(input)').forEach(el=>el.remove());
-      const media = document.createElement(type);
-      media.src = src;
-      if(type==='video'){ media.controls=true; media.muted=true; }
-      slot.appendChild(media);
-      const input = slot.querySelector('input[type=file]');
-      if(input){ input.dataset.loaded='true'; input.disabled=true; }
-      slot.style.cursor='default';
-      slot.style.border='1.5px solid rgba(212,175,55,0.5)';
-    } catch(err){}
-  });
-});
+// ─── (galería fija desde GitHub) ───
 
 // ─── GAME ───
 const questions = [
